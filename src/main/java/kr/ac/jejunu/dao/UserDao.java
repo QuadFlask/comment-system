@@ -17,11 +17,14 @@ public class UserDao {
 				new BeanPropertyRowMapper<User>(User.class), id);
 	}
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+	public void add(User user) {
+		SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+		simpleJdbcTemplate.update("insert into USER (id,name,password) values(?,?,?)", user.getId(), user.getName(),
+				user.getPassword());
 	}
 
-	public void add(User user) {
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
 	}
 
 }
