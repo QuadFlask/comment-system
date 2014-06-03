@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userDao">
+	<select id="findById" parameterType="java.lang.String" resultType="kr.ac.jejunu.model.User">
+		select 
+			id, name, password
+		from 
+			USER
+		where 
+			id = #{id}
+	</select>
+	
+	<insert id="add" parameterType="kr.ac.jejunu.model.User">
+		insert into USER(
+			id,
+			name,
+			password
+		) values(
+			#{id},
+			#{name},
+			#{password}
+		)
+	</insert>
+</mapper>

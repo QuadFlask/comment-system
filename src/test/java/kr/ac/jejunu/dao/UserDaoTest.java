@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.*;
 import kr.ac.jejunu.model.User;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
