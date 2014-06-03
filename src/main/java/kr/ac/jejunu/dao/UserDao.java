@@ -21,4 +21,7 @@ public class UserDao {
 		this.dataSource = dataSource;
 	}
 
+	public void add(User user) {
+	}
+
 }

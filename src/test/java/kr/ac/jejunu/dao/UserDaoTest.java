@@ -18,11 +18,23 @@ public class UserDaoTest {
 	UserDao userDao;
 	
 	@Test
-	public void get() {
+	public void get_findById() {
 		User user = userDao.findById("pop2331");
 		assertThat(user.getId(), is("pop2331"));
 		assertThat(user.getName(), is("flask"));
 		assertThat(user.getPassword(), is("1"));
+	}
+	
+	@Test
+	public void add() {
+		User user = new User("pop9310", "성의현", "2");
+		userDao.add(user);
+		
+		User addedUser = userDao.findById("pop9310");
+		assertNotNull(addedUser);
+		assertThat(addedUser.getId(), is(user.getId()));
+		assertThat(addedUser.getName(), is(user.getName()));
+		assertThat(addedUser.getPassword(), is(user.getPassword()));
 	}
 	
 }
