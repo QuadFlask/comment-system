@@ -8,8 +8,14 @@
 
 	<context:component-scan base-package="kr.ac.jejunu" />
 
-	<bean id="userDao" class="kr.ac.jejunu.dao.UserDao">
-		<property name="dataSource" ref="dataSource"></property>
+	<bean id="userDao" class="kr.ac.jejunu.dao.UserDaoMybatis">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations"
+			value="file:src/main/java/com/flask/photify/dao/mapper/*Dao.xml" />
 	</bean>
 
 	<bean id="dataSource"
