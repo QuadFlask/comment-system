@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "file:src/test/java/test-context.xml")
@@ -26,6 +27,7 @@ public class UserDaoTest {
 	}
 	
 	@Test
+	@Transactional
 	public void add() {
 		User user = new User("pop9310", "성의현", "2");
 		userDao.add(user);
