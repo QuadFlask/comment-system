@@ -14,4 +14,6 @@ public interface CommentDao {
 
 	public abstract void incRecommendationCount(int commentId);
 
+	public abstract void incOppositionCount(int commentId);
+
 }

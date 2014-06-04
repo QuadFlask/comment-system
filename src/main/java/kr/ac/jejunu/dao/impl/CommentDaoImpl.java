@@ -30,4 +30,9 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 		getSqlSession().update("commentDao.incRecommendationCount", commentId);
 	}
 
+	@Override
+	public void incOppositionCount(int commentId) {
+		getSqlSession().update("commentDao.incOppositionCount", commentId);
+	}
+
 }
