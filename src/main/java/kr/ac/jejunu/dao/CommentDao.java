@@ -9,7 +9,8 @@ import kr.ac.jejunu.model.Comment;
 public class CommentDao extends SqlSessionDaoSupport {
 
 	public List<Comment> getCommentsByPage(int page) {
-		return getSqlSession().selectList("commendDao.getCommentsByPage", page);
+		int offset = (page - 1) * 10;
+		return getSqlSession().selectList("commentDao.getCommentsByPage", offset);
 	}
 
 }
