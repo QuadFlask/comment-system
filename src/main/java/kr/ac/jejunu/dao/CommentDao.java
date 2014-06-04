@@ -12,4 +12,6 @@ public interface CommentDao {
 
 	public abstract void delete(int commentId);
 
+	public abstract void incRecommendationCount(int commentId, String id);
+
 }

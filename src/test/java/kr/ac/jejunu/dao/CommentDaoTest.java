@@ -34,7 +34,7 @@ public class CommentDaoTest {
 	@Test
 	@Transactional
 	public void addComment() {
-		Comment comment = addSampleComment();
+		Comment comment = createSampleComment();
 
 		commentDao.addCommnet(comment);
 
@@ -55,7 +55,7 @@ public class CommentDaoTest {
 	@Test
 	@Transactional
 	public void deleteComment() {
-		Comment comment = addSampleComment();
+		Comment comment = createSampleComment();
 
 		commentDao.addCommnet(comment);
 
@@ -67,7 +67,21 @@ public class CommentDaoTest {
 		assertThat(comments.size(), is(1));
 	}
 
-	private Comment addSampleComment() {
+	@Test
+	@Transactional
+	public void incRecommendationCount() {
+		Comment comment = createSampleComment();
+		
+		commentDao.addCommnet(comment);
+		commentDao.incRecommendationCount(comment.getCommentId(), comment.getWriter().getId());
+		
+		List<Comment> comments = commentDao.getCommentsByPage(1);
+		Comment incComment = comments.get(0);
+
+		assertThat(incComment.getRecommendationCount(), is(1));
+	}
+
+	private Comment createSampleComment() {
 		Comment comment = new Comment();
 		comment.setContents("addComment test contents");
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmm");

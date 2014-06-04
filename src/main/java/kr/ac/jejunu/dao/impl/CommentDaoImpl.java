@@ -25,4 +25,8 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 		getSqlSession().delete("commentDao.delete", commentId);
 	}
 
+	@Override
+	public void incRecommendationCount(int commentId, String id) {
+	}
+
 }
