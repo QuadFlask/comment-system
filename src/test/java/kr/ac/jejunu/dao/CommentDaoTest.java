@@ -49,7 +49,7 @@ public class CommentDaoTest {
 		assertThat(addedComments.getContents(), is(comment.getContents()));
 		assertThat(addedComments.getRegdttm(), is(comment.getRegdttm()));
 		assertThat(addedComments.getRecommendationCount(), is(comment.getRecommendationCount()));
-		assertThat(addedComments.getOppositeCount(), is(comment.getOppositeCount()));
+		assertThat(addedComments.getOppositionCount(), is(comment.getOppositionCount()));
 	}
 
 	@Test

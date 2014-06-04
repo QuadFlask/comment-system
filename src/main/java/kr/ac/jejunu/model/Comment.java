@@ -4,7 +4,7 @@ public class Comment {
 	private int commentId;
 	private User writer;
 	private String contents, regdttm;
-	private int recommendationCount, oppositeCount;
+	private int recommendationCount, oppositionCount;
 
 	public Comment() {
 		super();
@@ -50,12 +50,12 @@ public class Comment {
 		this.recommendationCount = recommendationCount;
 	}
 
-	public int getOppositeCount() {
-		return oppositeCount;
+	public int getOppositionCount() {
+		return oppositionCount;
 	}
 
-	public void setOppositeCount(int oppositeCount) {
-		this.oppositeCount = oppositeCount;
+	public void setOppositionCount(int oppositionCount) {
+		this.oppositionCount = oppositionCount;
 	}
 
 }

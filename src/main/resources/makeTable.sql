@@ -17,13 +17,13 @@ create table comment(
 	comment_id int auto_increment primary key,
 	writer_id varchar(20) not null,
 	contents varchar(500),
-	recommadation_count int default 0,
-	opposite_count int default 0,
+	recommendation_count int default 0,
+	opposition_count int default 0,
 	regdttm char(12),
 	foreign key (`writer_id`) references `user`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into comment(writer_id, contents, recommadation_count, opposite_count, regdttm) values(
+insert into comment(writer_id, contents, recommendation_count, opposition_count, regdttm) values(
 	'pop2331',
 	'test',
 	1,

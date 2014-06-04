@@ -9,8 +9,8 @@
 			writer_id,
 			USER.name as writer_name,
 			contents,
-			recommadation_count,
-			opposite_count,
+			recommendation_count,
+			opposition_count,
 			regdttm 
 		from 
 			COMMENT, USER 
@@ -23,8 +23,8 @@
 		<id property="commentId" column="comment_id"/>
 		<result property="contents" column="contents"/>
 		<result property="regdttm" column="regdttm"/>
-		<result property="recommendationCount" column="recommadation_count"/>
-		<result property="oppositeCount" column="opposite_count"/>
+		<result property="recommendationCount" column="recommendation_count"/>
+		<result property="oppositionCount" column="opposition_count"/>
 		<association property="writer" javaType="kr.ac.jejunu.model.User">
 			<id property="id" column="writer_id"/> 
 			<result property="name" column="writer_name"/> 
@@ -47,7 +47,7 @@
 	</delete>
 	<update id="incRecommendationCount" parameterType="java.lang.Integer">
 		update COMMENT
-		set recommadation_count = recommadation_count+1
+		set recommendation_count = recommendation_count + 1
 		where comment_id = #{commentId}
 	</update>
 	
