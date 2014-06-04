@@ -41,5 +41,9 @@
 			#{regdttm}
 		)
 	</insert>
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from COMMENT
+		where comment_id = #{commentId}
+	</delete>
 	
 </mapper>

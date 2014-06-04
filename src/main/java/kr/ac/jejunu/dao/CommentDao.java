@@ -10,4 +10,6 @@ public interface CommentDao {
 
 	public abstract void addCommnet(Comment comment);
 
+	public abstract void delete(int commentId);
+
 }

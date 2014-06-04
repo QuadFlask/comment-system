@@ -34,12 +34,7 @@ public class CommentDaoTest {
 	@Test
 	@Transactional
 	public void addComment() {
-		Comment comment = new Comment();
-		comment.setContents("addComment test contents");
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmm");
-		String regdttm = simpleDateFormat.format(Calendar.getInstance().getTime());
-		comment.setRegdttm(regdttm);
-		comment.setWriter(new User("pop2331", "flask", null));
+		Comment comment = addSampleComment();
 
 		commentDao.addCommnet(comment);
 
@@ -55,5 +50,30 @@ public class CommentDaoTest {
 		assertThat(addedComments.getRegdttm(), is(comment.getRegdttm()));
 		assertThat(addedComments.getRecommendationCount(), is(comment.getRecommendationCount()));
 		assertThat(addedComments.getOppositeCount(), is(comment.getOppositeCount()));
+	}
+
+	@Test
+	@Transactional
+	public void deleteComment() {
+		Comment comment = addSampleComment();
+
+		commentDao.addCommnet(comment);
+
+		List<Comment> comments = commentDao.getCommentsByPage(1);
+		assertThat(comments.size(), is(2));
+		commentDao.delete(comments.get(0).getCommentId());
+
+		comments = commentDao.getCommentsByPage(1);
+		assertThat(comments.size(), is(1));
+	}
+
+	private Comment addSampleComment() {
+		Comment comment = new Comment();
+		comment.setContents("addComment test contents");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmm");
+		String regdttm = simpleDateFormat.format(Calendar.getInstance().getTime());
+		comment.setRegdttm(regdttm);
+		comment.setWriter(new User("pop2331", "flask", null));
+		return comment;
 	}
 }

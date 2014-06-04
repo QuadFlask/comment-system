@@ -20,4 +20,9 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 		getSqlSession().insert("commentDao.addComment", comment);
 	}
 
+	@Override
+	public void delete(int commentId) {
+		getSqlSession().delete("commentDao.delete", commentId);
+	}
+
 }
