@@ -45,5 +45,10 @@
 		delete from COMMENT
 		where comment_id = #{commentId}
 	</delete>
+	<update id="incRecommendationCount" parameterType="java.lang.Integer">
+		update COMMENT
+		set recommadation_count = recommadation_count+1
+		where comment_id = #{commentId}
+	</update>
 	
 </mapper>

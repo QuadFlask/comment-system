@@ -71,11 +71,14 @@ public class CommentDaoTest {
 	@Transactional
 	public void incRecommendationCount() {
 		Comment comment = createSampleComment();
-		
+
 		commentDao.addCommnet(comment);
-		commentDao.incRecommendationCount(comment.getCommentId());
-		
 		List<Comment> comments = commentDao.getCommentsByPage(1);
+
+		comment = comments.get(0);
+		commentDao.incRecommendationCount(comment.getCommentId());
+
+		comments = commentDao.getCommentsByPage(1);
 		Comment incComment = comments.get(0);
 
 		assertThat(incComment.getRecommendationCount(), is(1));
