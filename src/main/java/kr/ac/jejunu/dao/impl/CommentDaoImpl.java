@@ -26,7 +26,8 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 	}
 
 	@Override
-	public void incRecommendationCount(int commentId, String id) {
+	public void incRecommendationCount(int commentId) {
+		getSqlSession().update("commentDao.incRecommendationCount", commentId);
 	}
 
 }

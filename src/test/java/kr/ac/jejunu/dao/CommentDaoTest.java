@@ -73,7 +73,7 @@ public class CommentDaoTest {
 		Comment comment = createSampleComment();
 		
 		commentDao.addCommnet(comment);
-		commentDao.incRecommendationCount(comment.getCommentId(), comment.getWriter().getId());
+		commentDao.incRecommendationCount(comment.getCommentId());
 		
 		List<Comment> comments = commentDao.getCommentsByPage(1);
 		Comment incComment = comments.get(0);
