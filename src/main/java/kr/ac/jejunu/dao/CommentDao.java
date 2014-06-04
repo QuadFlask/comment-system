@@ -13,4 +13,7 @@ public class CommentDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("commentDao.getCommentsByPage", offset);
 	}
 
+	public void addCommnet(Comment comment) {
+	}
+
 }
