@@ -5,7 +5,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import kr.ac.jejunu.dao.UserDao;
 import kr.ac.jejunu.model.User;
 
-public class UserDaoMybatis extends SqlSessionDaoSupport implements UserDao {
+public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 
 	@Override
 	public User findById(String id) {

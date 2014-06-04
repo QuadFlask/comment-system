@@ -12,7 +12,7 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 
-	<bean id="userDao" class="kr.ac.jejunu.dao.impl.UserDaoMybatis">
+	<bean id="userDao" class="kr.ac.jejunu.dao.impl.UserDaoImpl">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 	
