@@ -48,6 +48,7 @@ public class CommentDaoTest {
 
 		Comment addedComments = comments.get(0);
 
+		assertNotSame(comment, addedComments);
 		assertThat(addedComments.getWriter().getId(), is(comment.getWriter().getId()));
 		assertThat(addedComments.getWriter().getName(), is(comment.getWriter().getName()));
 		assertThat(addedComments.getContents(), is(comment.getContents()));

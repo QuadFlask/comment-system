@@ -14,6 +14,7 @@ public class CommentDao extends SqlSessionDaoSupport {
 	}
 
 	public void addCommnet(Comment comment) {
+		getSqlSession().insert("commentDao.addComment", comment);
 	}
 
 }

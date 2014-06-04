@@ -7,15 +7,15 @@
 		select 
 			comment_id,
 			writer_id,
-			user.name as writer_name,
+			USER.name as writer_name,
 			contents,
 			recommadation_count,
 			opposite_count,
 			regdttm 
 		from 
-			comment, user 
+			COMMENT, USER 
 		where 
-			writer_id = user.id 
+			writer_id = USER.id 
 		order by regdttm desc 
 		limit 10 offset #{offset}
 	</select>
@@ -30,5 +30,16 @@
 			<result property="name" column="writer_name"/> 
 		</association>
 	</resultMap>
+	<insert id="addComment" parameterType="kr.ac.jejunu.model.Comment">
+		insert into COMMENT(
+			writer_id,
+			contents,
+			regdttm
+		) values(
+			#{writer.id},
+			#{contents},
+			#{regdttm}
+		)
+	</insert>
 	
 </mapper>
