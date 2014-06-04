@@ -2,19 +2,12 @@ package kr.ac.jejunu.dao;
 
 import java.util.List;
 
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-
 import kr.ac.jejunu.model.Comment;
 
-public class CommentDao extends SqlSessionDaoSupport {
+public interface CommentDao {
 
-	public List<Comment> getCommentsByPage(int page) {
-		int offset = (page - 1) * 10;
-		return getSqlSession().selectList("commentDao.getCommentsByPage", offset);
-	}
+	public abstract List<Comment> getCommentsByPage(int page);
 
-	public void addCommnet(Comment comment) {
-		getSqlSession().insert("commentDao.addComment", comment);
-	}
+	public abstract void addCommnet(Comment comment);
 
 }

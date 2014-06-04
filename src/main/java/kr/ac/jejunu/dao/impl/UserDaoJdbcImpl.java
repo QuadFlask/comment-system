@@ -1,7 +1,8 @@
-package kr.ac.jejunu.dao;
+package kr.ac.jejunu.dao.impl;
 
 import javax.sql.DataSource;
 
+import kr.ac.jejunu.dao.UserDao;
 import kr.ac.jejunu.model.User;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

@@ -8,11 +8,11 @@
 
 	<context:component-scan base-package="kr.ac.jejunu" />
 
-	<bean id="commentDao" class="kr.ac.jejunu.dao.CommentDao">
+	<bean id="commentDao" class="kr.ac.jejunu.dao.impl.CommentDaoImpl">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 
-	<bean id="userDao" class="kr.ac.jejunu.dao.UserDaoMybatis">
+	<bean id="userDao" class="kr.ac.jejunu.dao.impl.UserDaoMybatis">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 	

@@ -1,7 +1,8 @@
-package kr.ac.jejunu.dao;
+package kr.ac.jejunu.dao.impl;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
+import kr.ac.jejunu.dao.UserDao;
 import kr.ac.jejunu.model.User;
 
 public class UserDaoMybatis extends SqlSessionDaoSupport implements UserDao {
