@@ -27,5 +27,4 @@
 
 	<context:component-scan base-package="kr.ac.jejunu" />
 
-
 </beans>
