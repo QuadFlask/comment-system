@@ -58,4 +58,11 @@ public class Comment {
 		this.oppositionCount = oppositionCount;
 	}
 
+	@Override
+	public String toString() {
+		return "Comment [commentId=" + commentId + ", writer=" + writer + ", contents=" + contents + ", regdttm="
+				+ regdttm + ", recommendationCount=" + recommendationCount + ", oppositionCount=" + oppositionCount
+				+ "]";
+	}
+
 }
