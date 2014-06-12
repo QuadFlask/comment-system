@@ -16,7 +16,7 @@
 			COMMENT, USER 
 		where 
 			writer_id = USER.id 
-		order by regdttm desc 
+		order by regdttm desc, comment_id desc
 		limit 10 offset #{offset}
 	</select>
 	<resultMap type="kr.ac.jejunu.model.Comment" id="comment">
