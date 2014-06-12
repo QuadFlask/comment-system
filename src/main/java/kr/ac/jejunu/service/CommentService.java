@@ -18,4 +18,8 @@ public class CommentService {
 		return commentDao.getCommentsByPage(page);
 	}
 
+	public void write(Comment comment) {
+		commentDao.addCommnet(comment);
+	}
+
 }
