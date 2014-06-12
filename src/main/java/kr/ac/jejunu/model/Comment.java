@@ -1,9 +1,14 @@
 package kr.ac.jejunu.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Comment {
 	private int commentId;
 	private User writer;
-	private String contents, regdttm;
+	private String contents, regdttm, prettyDateTime;
 	private int recommendationCount, oppositionCount;
 
 	public Comment() {
@@ -40,6 +45,26 @@ public class Comment {
 
 	public void setRegdttm(String regdttm) {
 		this.regdttm = regdttm;
+
+		try {
+			SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmm");
+			Date date = s.parse(regdttm);
+			Date now = Calendar.getInstance().getTime();
+
+			SimpleDateFormat s2;
+			if (date.getYear() == now.getYear() && date.getMonth() == now.getMonth() && date.getDate() == now.getDate()) {
+				s2 = new SimpleDateFormat("hh:mm");
+			} else {
+				s2 = new SimpleDateFormat("yyyy.MM.dd");
+			}
+			prettyDateTime = s2.format(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String getPrettyDateTime() {
+		return prettyDateTime;
 	}
 
 	public int getRecommendationCount() {

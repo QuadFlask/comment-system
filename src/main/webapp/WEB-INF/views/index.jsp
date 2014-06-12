@@ -24,7 +24,7 @@
 						<div class="contents">${comment.contents}</div>
 						<button class="recommand_btn">추천(${comment.recommendationCount})</button>
 						<button class="opposite_btn">반대(${comment.oppositionCount})</button>
-						<div class="time_stamp">${comment.regdttm}</div>
+						<div class="time_stamp">${comment.prettyDateTime}</div>
 					</div>
 				</c:forEach>
 				
