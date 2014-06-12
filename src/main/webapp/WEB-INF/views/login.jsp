@@ -10,12 +10,12 @@
 		<div class="form_wrap">
 			<form id="login_form" action="loginAction" method="post">
 				<label for="id">ID</label>
-				<input type="text" id="id"/><br>
+				<input type="text" id="id" name="id"/><br>
 				<label for="password">PASSWORD</label>
-				<input type="password" id="password"/><br>
+				<input type="password" id="password" name="password"/><br>
 				<div id="btn_wrap">
 					<input type="submit" id="submit_btn" value="로그인"/>
-					<input type="button" id="cancle_btn" value="취소"/>
+					<input type="button" id="cancle_btn" value="취소" onclick="self.close()"/>
 				</div>
 			</form>
 		</div>

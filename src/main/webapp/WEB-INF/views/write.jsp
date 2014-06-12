@@ -9,7 +9,7 @@
 	<body>
 		<div class="form_wrap">
 			<form id="comment_form" action="write" method="post">
-				<textarea id="message"></textarea>
+				<textarea id="message" name="contents"></textarea>
 				<div id="btn_wrap">
 					<input type="submit" id="submit_btn" value="저장"/>
 					<input type="button" id="cancle_btn" value="취소"/>
