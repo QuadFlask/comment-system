@@ -11,7 +11,7 @@
 		<div id="wrap">
 			<div id="header">
 				<span id="user_info"></span>
-				<button id="write_comment_btn">글쓰기</button>
+				<button id="write_comment_btn" onclick="window.open('/login', 'login', 'width=300, height=200')">글쓰기</button>
 			</div>
 			<div id="comment_container">
 			
