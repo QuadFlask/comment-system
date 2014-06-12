@@ -1,5 +1,7 @@
 package kr.ac.jejunu.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class CommentService {
 	}
 
 	public void write(Comment comment) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmm");
+		String regdttm = simpleDateFormat.format(Calendar.getInstance().getTime());
+		comment.setRegdttm(regdttm);
 		commentDao.addCommnet(comment);
 	}
 
