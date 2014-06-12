@@ -16,11 +16,13 @@
 		insert into USER(
 			id,
 			name,
-			password
+			password,
+			explanation
 		) values(
 			#{id},
 			#{name},
-			#{password}
+			#{password},
+			#{explanation}
 		)
 	</insert>
 </mapper>

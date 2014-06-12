@@ -18,7 +18,7 @@ public class UserDaoTest {
 
 	@Autowired
 	UserDao userDao;
-	
+
 	@Test
 	public void findById() {
 		User user = userDao.findById("pop2331");
@@ -27,18 +27,19 @@ public class UserDaoTest {
 		assertThat(user.getPassword(), is("1"));
 		assertThat(user.getExplanation(), is("flask"));
 	}
-	
+
 	@Test
 	@Transactional
 	public void add() {
-		User user = new User("pop9310", "성의현", "2");
+		User user = new User("pop9310", "성의현2", "2", "flask2");
 		userDao.add(user);
-		
+
 		User addedUser = userDao.findById("pop9310");
 		assertNotNull(addedUser);
 		assertThat(addedUser.getId(), is(user.getId()));
 		assertThat(addedUser.getName(), is(user.getName()));
 		assertThat(addedUser.getPassword(), is(user.getPassword()));
+		assertThat(addedUser.getExplanation(), is(user.getExplanation()));
 	}
-	
+
 }

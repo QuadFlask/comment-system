@@ -7,11 +7,12 @@ public class User {
 		super();
 	}
 
-	public User(String id, String name, String password) {
+	public User(String id, String name, String password, String explanation) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
+		this.explanation = explanation;
 	}
 
 	public String getId() {
