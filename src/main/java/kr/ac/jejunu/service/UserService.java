@@ -14,8 +14,11 @@ public class UserService {
 
 	public boolean login(User user) {
 		User findById = userDao.findById(user.getId());
-		if (findById != null)
+		if (findById != null) {
+			user.setName(findById.getName());
+			user.setExplanation(findById.getExplanation());
 			return findById.getPassword().equals(user.getPassword());
+		}
 		return false;
 	}
 

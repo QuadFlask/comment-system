@@ -10,8 +10,11 @@
 	<body>
 		<div id="wrap">
 			<div id="header">
-				<span id="user_info"></span>
-				<button id="write_comment_btn" onclick="window.open('/login', 'login', 'width=400, height=250')">글쓰기</button>
+				<span id="user_info">
+					<c:if test="${user != null}">
+						${user.name} (${user.explanation}) 
+					</c:if></span>
+				<button id="write_comment_btn" onclick="window.open('/write', 'write', 'width=400, height=250')">글쓰기</button>
 			</div>
 			<div id="comment_container">
 			

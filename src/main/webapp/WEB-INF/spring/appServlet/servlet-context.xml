@@ -56,5 +56,12 @@
 
 	<mvc:view-controller path="/login" view-name="login" />
 	<mvc:view-controller path="/write" view-name="write" />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/write" />
+			<bean id="loginInterceptor" class="kr.ac.jejunu.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

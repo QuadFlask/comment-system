@@ -2,6 +2,7 @@ package kr.ac.jejunu.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.ac.jejunu.service.CommentService;
 
@@ -17,10 +18,11 @@ public class CommentController {
 	CommentService commentService;
 
 	@RequestMapping("/")
-	public ModelAndView commentList(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView commentList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index");
 		mv.addObject("commentList", commentService.getCommentList(1));
+		mv.addObject("user", session.getAttribute("user"));
 		return mv;
 	}
 }

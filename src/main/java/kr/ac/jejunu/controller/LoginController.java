@@ -1,5 +1,7 @@
 package kr.ac.jejunu.controller;
 
+import javax.servlet.http.HttpSession;
+
 import kr.ac.jejunu.model.User;
 import kr.ac.jejunu.service.UserService;
 
@@ -15,9 +17,11 @@ public class LoginController {
 	UserService userService;
 
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)
-	public String loginAction(User user) {
-		if (userService.login(user))
+	public String loginAction(User user, HttpSession session) {
+		if (userService.login(user)) {
+			session.setAttribute("user", user);
 			return "redirect:/write";
+		}
 		return "redirect:/login";
 	}
 
