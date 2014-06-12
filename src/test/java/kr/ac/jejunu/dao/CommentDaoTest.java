@@ -108,7 +108,7 @@ public class CommentDaoTest {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmm");
 		String regdttm = simpleDateFormat.format(Calendar.getInstance().getTime());
 		comment.setRegdttm(regdttm);
-		comment.setWriter(new User("pop2331", "flask", null));
+		comment.setWriter(new User("pop2331", "성의현", null, null));
 		return comment;
 	}
 }
