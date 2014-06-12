@@ -5,7 +5,7 @@
 <mapper namespace="userDao">
 	<select id="findById" parameterType="java.lang.String" resultType="kr.ac.jejunu.model.User">
 		select 
-			id, name, password
+			id, name, password, explanation
 		from 
 			USER
 		where 
