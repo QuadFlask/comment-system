@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div class="form_wrap">
-			<form id="login_form" action="login" method="post">
+			<form id="login_form" action="loginAction" method="post">
 				<label for="id">ID</label>
 				<input type="text" id="id"/><br>
 				<label for="password">PASSWORD</label>
