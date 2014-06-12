@@ -1,7 +1,7 @@
 package kr.ac.jejunu.model;
 
 public class User {
-	private String id, name, password;
+	private String id, name, password, explanation;
 
 	public User() {
 		super();
@@ -36,6 +36,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getExplanation() {
+		return explanation;
+	}
+
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
 	}
 
 }

@@ -20,11 +20,12 @@ public class UserDaoTest {
 	UserDao userDao;
 	
 	@Test
-	public void get_findById() {
+	public void findById() {
 		User user = userDao.findById("pop2331");
 		assertThat(user.getId(), is("pop2331"));
-		assertThat(user.getName(), is("flask"));
+		assertThat(user.getName(), is("성의현"));
 		assertThat(user.getPassword(), is("1"));
+		assertThat(user.getExplanation(), is("flask"));
 	}
 	
 	@Test

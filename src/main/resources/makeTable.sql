@@ -3,15 +3,16 @@ create database commentdb;
 grant all privileges on commentdb.* to 'comment-admin'@'localhost' identified by '1';
 grant all privileges on commentdb.* to 'comment-admin'@'%' identified by '1';
 
-user commentdb;
+use commentdb;
 
 create table user(
-	id varhcar(20) primary key,
+	id varchar(20) primary key,
 	name varchar(20) not null,
-	password varchar(20) not null
+	password varchar(20) not null,
+	explanation varchar(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into user values('pop2331', 'flask', '1');
+insert into user values('pop2331', '성의현', '1', 'flask');
 
 create table comment(
 	comment_id int auto_increment primary key,
