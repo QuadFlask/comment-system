@@ -1,5 +1,6 @@
 package kr.ac.jejunu.service;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 import java.util.List;
@@ -23,5 +24,11 @@ public class CommentServiceTest {
 	public void getCommentList() {
 		List<Comment> comments = commentService.getCommentList(1);
 		assertTrue(comments.size() == 1);
+
+		Comment comment = comments.get(0);
+		assertThat(comment.getCommentId(), is(1));
+		assertThat(comment.getWriter().getId(), is("pop2331"));
+		assertThat(comment.getWriter().getName(), is("성의현"));
+		assertThat(comment.getContents(), is("test"));
 	}
 }

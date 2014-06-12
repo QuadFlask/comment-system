@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -9,18 +10,21 @@
 	<body>
 		<div id="wrap">
 			<div id="header">
-				<span id="user_info">
-				</span>
+				<span id="user_info"></span>
 				<button id="write_comment_btn">글쓰기</button>
 			</div>
 			<div id="comment_container">
-				<div class="comment">
-					<div class="name">성의현</div>
-					<div class="message">과제중...</div>
-					<button class="recommand_btn">추천(0)</button>
-					<button class="opposite_btn">반대(0)</button>
-					<div class="time_stamp">12:12</div>
-				</div>
+			
+				<c:forEach var="comment" items="${commentList}">
+					<div class="comment">
+						<div class="name">${comment.writer.name}</div>
+						<div class="contents">${comment.contents}</div>
+						<button class="recommand_btn">추천(${comment.recommendationCount})</button>
+						<button class="opposite_btn">반대(${comment.oppositionCount})</button>
+						<div class="time_stamp">${comment.regdttm}</div>
+					</div>
+				</c:forEach>
+				
 			</div>
 		</div>
 	</body>
