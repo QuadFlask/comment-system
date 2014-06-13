@@ -31,7 +31,8 @@ public class CommentService {
 		if (!commentDao.isRecommendedCommentBy(userId, commentId)) {
 			commentDao.incRecommendationCount(commentId);
 			commentDao.markAsRecommendBy(userId, commentId);
-		}
+		} else
+			throw new RuntimeException();
 	}
 
 	public void oppositeComment(String userId, int commentId) {

@@ -12,21 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class RecommendCommentController {
+public class OppositeCommentController {
 
 	@Autowired
 	CommentService commentService;
 
-	@RequestMapping("comment/{commentId}/recommend")
+	@RequestMapping("comment/{commentId}/opposite")
 	@ResponseBody
-	public String incRecommendAction(@PathVariable int commentId, HttpSession session) {
+	public String incOppositeAction(@PathVariable int commentId, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
-			try {
-				commentService.recommendComment(user.getId(), commentId);
-			} catch (RuntimeException e) {
-				return "{\"result\":\"duplicated\"}";
-			}
+			commentService.oppositeComment(user.getId(), commentId);
 			return "{\"result\":\"success\"}";
 		}
 		throw new RuntimeException(); 
