@@ -22,7 +22,7 @@
 					<div class="comment">
 						<div class="name">${comment.writer.name}</div>
 						<div class="contents">${comment.contents}</div>
-						<button class="recommand_btn">추천(${comment.recommendationCount})</button>
+						<button class="recommand_btn" onclick="recommendComment(${comment.commentId});">추천(${comment.recommendationCount})</button>
 						<button class="opposite_btn">반대(${comment.oppositionCount})</button>
 						<div class="time_stamp">${comment.prettyDateTime}</div>
 					</div>
@@ -31,4 +31,25 @@
 			</div>
 		</div>
 	</body>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">
+		function recommendComment(commentId){
+			$.ajax(
+				{
+					url: "/comment/" + commentId + "/recommend",
+					dataType: "json",
+					success: function (data){
+						console.log(data);
+					},
+					error: function (o,c,m){
+						window.open('/login', 'login', 'width=400, height=250')
+						/* alert(o+c+m);
+						console.log(o);
+						console.log(c);
+						console.log(m); */
+					}
+				}
+			);
+		}
+	</script>
 </html>

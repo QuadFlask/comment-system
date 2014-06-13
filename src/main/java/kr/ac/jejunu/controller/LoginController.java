@@ -1,5 +1,7 @@
 package kr.ac.jejunu.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.ac.jejunu.model.User;
@@ -17,11 +19,17 @@ public class LoginController {
 	UserService userService;
 
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)
-	public String loginAction(User user, HttpSession session) {
+	public String loginAction(User user, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		if (userService.login(user)) {
 			session.setAttribute("user", user);
-			return "redirect:/write";
+			
+			String requestURI = (String) session.getAttribute("requestURI");
+			if (requestURI.equals("/write"))
+				return "redirect:/write";
+			else if (requestURI.contains("/comment"))
+				return "close";
 		}
+		
 		return "redirect:/login";
 	}
 

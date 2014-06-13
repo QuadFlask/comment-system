@@ -60,6 +60,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/write" />
+			<mvc:mapping path="/comment/**" />
 			<bean id="loginInterceptor" class="kr.ac.jejunu.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
