@@ -56,8 +56,8 @@ public class CommentServiceTest {
 	@Transactional
 	public void recommandComment() {
 		commentService.write(comment);
-		Comment wroteComment = commentService.getCommentList(1).get(0);
-		commentService.recommendComment(writer.getId(), wroteComment.getCommentId());
+		Comment writtenComment = commentService.getCommentList(1).get(0);
+		commentService.recommendComment(writer.getId(), writtenComment.getCommentId());
 
 		Comment recommendedComment = commentService.getCommentList(1).get(0);
 		assertThat(recommendedComment.getRecommendationCount(), is(1));
@@ -67,8 +67,8 @@ public class CommentServiceTest {
 	@Transactional
 	public void oppositeComment() {
 		commentService.write(comment);
-		Comment wroteComment = commentService.getCommentList(1).get(0);
-		commentService.oppositeComment(writer.getId(), wroteComment.getCommentId());
+		Comment writtenComment = commentService.getCommentList(1).get(0);
+		commentService.oppositeComment(writer.getId(), writtenComment.getCommentId());
 
 		Comment oppositedComment = commentService.getCommentList(1).get(0);
 		assertThat(oppositedComment.getOppositionCount(), is(1));
@@ -76,12 +76,12 @@ public class CommentServiceTest {
 
 	@Test
 	@Transactional
-	public void recommandCommentTwice() {
+	public void recommandCommentTwiceBySameUser() {
 		commentService.write(comment);
-		Comment wroteComment = commentService.getCommentList(1).get(0);
+		Comment writtenComment = commentService.getCommentList(1).get(0);
 		// twice!
-		commentService.recommendComment(writer.getId(), wroteComment.getCommentId());
-		commentService.recommendComment(writer.getId(), wroteComment.getCommentId());
+		commentService.recommendComment(writer.getId(), writtenComment.getCommentId());
+		commentService.recommendComment(writer.getId(), writtenComment.getCommentId());
 
 		Comment recommendedComment = commentService.getCommentList(1).get(0);
 		// but inc only one time
@@ -90,12 +90,12 @@ public class CommentServiceTest {
 
 	@Test
 	@Transactional
-	public void oppositeCommentTwice() {
+	public void oppositeCommentTwiceBySameUser() {
 		commentService.write(comment);
-		Comment wroteComment = commentService.getCommentList(1).get(0);
+		Comment writtenComment = commentService.getCommentList(1).get(0);
 		// twice!
-		commentService.oppositeComment(writer.getId(), wroteComment.getCommentId());
-		commentService.oppositeComment(writer.getId(), wroteComment.getCommentId());
+		commentService.oppositeComment(writer.getId(), writtenComment.getCommentId());
+		commentService.oppositeComment(writer.getId(), writtenComment.getCommentId());
 
 		Comment oppositedComment = commentService.getCommentList(1).get(0);
 		// but inc only one time
