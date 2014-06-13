@@ -94,6 +94,7 @@ public class CommentServiceTest {
 		commentService.recommendComment(writer.getId(), wroteComment.getCommentId());
 
 		Comment recommendedComment = commentService.getCommentList(1).get(0);
+		// but inc only one time
 		assertThat(recommendedComment.getRecommendationCount(), is(1));
 	}
 }

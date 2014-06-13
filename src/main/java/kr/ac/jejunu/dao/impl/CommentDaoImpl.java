@@ -41,8 +41,16 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 	public boolean isRecommendedCommentBy(String userId, int commentId) {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("userId", userId);
-		param.put("commendId", commentId);
-		return Integer.parseInt(getSqlSession().selectOne("commentDao.isRecommendedCommentBy", param).toString()) >= 1;
+		param.put("commentId", commentId);
+		return Integer.parseInt(getSqlSession().selectOne("commentDao.isRecommendedCommentBy", param).toString()) == 1;
+	}
+
+	@Override
+	public void markAsRecommendBy(String userId, int commentId) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("userId", userId);
+		param.put("commentId", commentId);
+		getSqlSession().insert("commentDao.markAsRecommendBy", param);
 	}
 
 }

@@ -18,4 +18,6 @@ public interface CommentDao {
 
 	public abstract boolean isRecommendedCommentBy(String userId, int commentId);
 
+	public abstract void markAsRecommendBy(String userId, int commentId);
+
 }

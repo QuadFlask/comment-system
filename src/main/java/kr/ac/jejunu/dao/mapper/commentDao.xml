@@ -55,5 +55,23 @@
 		set opposition_count = opposition_count + 1
 		where comment_id = #{commentId}
 	</update>
+	<select id="isRecommendedCommentBy" parameterType="java.util.Map" resultType="int">
+		select 
+			count(*) >= 1
+		from 
+			RECOMMENDED_COMMENT
+		where 
+			comment_id = #{commentId} and
+			recommend_user_id = #{userId}
+	</select>
+	<insert id="markAsRecommendBy">
+		insert into RECOMMENDED_COMMENT (
+			comment_id,
+			recommend_user_id
+		) values (
+			#{commentId},
+			#{userId}
+		)
+	</insert>
 	
 </mapper>

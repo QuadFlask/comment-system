@@ -28,8 +28,10 @@ public class CommentService {
 	}
 
 	public void recommendComment(String userId, int commentId) {
-		if (!commentDao.isRecommendedCommentBy(userId, commentId))
+		if (!commentDao.isRecommendedCommentBy(userId, commentId)) {
 			commentDao.incRecommendationCount(commentId);
+			commentDao.markAsRecommendBy(userId, commentId);
+		}
 	}
 
 	public void oppositeComment(int commentId) {
