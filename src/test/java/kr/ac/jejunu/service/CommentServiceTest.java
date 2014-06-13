@@ -8,6 +8,7 @@ import java.util.List;
 import kr.ac.jejunu.model.Comment;
 import kr.ac.jejunu.model.User;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,15 @@ public class CommentServiceTest {
 
 	@Autowired
 	CommentService commentService;
+	private User writer = new User("pop2331", "flask", null, null);
+	private Comment comment;
+
+	@Before
+	public void setup() {
+		comment = new Comment();
+		comment.setWriter(writer);
+		comment.setContents("test comment text");
+	}
 
 	@Test
 	public void getCommentList() {
@@ -37,12 +47,7 @@ public class CommentServiceTest {
 	@Test
 	@Transactional
 	public void writeComment() {
-		Comment comment = new Comment();
-		User writer = new User("pop2331", "flask", null, null);
-		comment.setWriter(writer);
-		comment.setContents("test comment text");
 		commentService.write(comment);
-
 		List<Comment> commentList = commentService.getCommentList(1);
 		assertTrue(commentList.size() == 2);
 	}
@@ -50,12 +55,7 @@ public class CommentServiceTest {
 	@Test
 	@Transactional
 	public void recommandComment() {
-		Comment comment = new Comment();
-		User writer = new User("pop2331", "flask", null, null);
-		comment.setWriter(writer);
-		comment.setContents("test comment text");
 		commentService.write(comment);
-
 		Comment wroteComment = commentService.getCommentList(1).get(0);
 		commentService.recommendComment(writer.getId(), wroteComment.getCommentId());
 
@@ -66,12 +66,7 @@ public class CommentServiceTest {
 	@Test
 	@Transactional
 	public void oppositeComment() {
-		Comment comment = new Comment();
-		User writer = new User("pop2331", "flask", null, null);
-		comment.setWriter(writer);
-		comment.setContents("test comment text");
 		commentService.write(comment);
-
 		Comment wroteComment = commentService.getCommentList(1).get(0);
 		commentService.oppositeComment(writer.getId(), wroteComment.getCommentId());
 
@@ -82,12 +77,7 @@ public class CommentServiceTest {
 	@Test
 	@Transactional
 	public void recommandCommentTwice() {
-		Comment comment = new Comment();
-		User writer = new User("pop2331", "flask", null, null);
-		comment.setWriter(writer);
-		comment.setContents("test comment text");
 		commentService.write(comment);
-
 		Comment wroteComment = commentService.getCommentList(1).get(0);
 		// twice!
 		commentService.recommendComment(writer.getId(), wroteComment.getCommentId());
@@ -101,12 +91,7 @@ public class CommentServiceTest {
 	@Test
 	@Transactional
 	public void oppositeCommentTwice() {
-		Comment comment = new Comment();
-		User writer = new User("pop2331", "flask", null, null);
-		comment.setWriter(writer);
-		comment.setContents("test comment text");
 		commentService.write(comment);
-
 		Comment wroteComment = commentService.getCommentList(1).get(0);
 		// twice!
 		commentService.oppositeComment(writer.getId(), wroteComment.getCommentId());
