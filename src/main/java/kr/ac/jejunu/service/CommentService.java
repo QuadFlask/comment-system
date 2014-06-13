@@ -31,4 +31,8 @@ public class CommentService {
 		commentDao.incRecommendationCount(commentId);
 	}
 
+	public void oppositeComment(int commentId) {
+		commentDao.incOppositionCount(commentId);
+	}
+
 }
