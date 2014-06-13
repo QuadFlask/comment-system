@@ -73,5 +73,23 @@
 			#{userId}
 		)
 	</insert>
+	<select id="isOppositedCommentBy" parameterType="java.util.Map" resultType="int">
+		select 
+			count(*) >= 1
+		from 
+			OPPOSITED_COMMENT
+		where 
+			comment_id = #{commentId} and
+			opposited_user_id = #{userId}
+	</select>
+	<insert id="markAsOppositeBy">
+		insert into OPPOSITED_COMMENT (
+			comment_id,
+			opposited_user_id
+		) values (
+			#{commentId},
+			#{userId}
+		)
+	</insert>
 	
 </mapper>

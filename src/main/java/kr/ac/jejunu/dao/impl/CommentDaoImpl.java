@@ -53,4 +53,20 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 		getSqlSession().insert("commentDao.markAsRecommendBy", param);
 	}
 
+	@Override
+	public boolean isOppositedCommentBy(String userId, int commentId) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("userId", userId);
+		param.put("commentId", commentId);
+		return Integer.parseInt(getSqlSession().selectOne("commentDao.isOppositedCommentBy", param).toString()) == 1;
+	}
+
+	@Override
+	public void markAsOppositeBy(String userId, int commentId) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("userId", userId);
+		param.put("commentId", commentId);
+		getSqlSession().insert("commentDao.markAsOppositeBy", param);
+	}
+
 }

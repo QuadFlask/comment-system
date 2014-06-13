@@ -34,8 +34,11 @@ public class CommentService {
 		}
 	}
 
-	public void oppositeComment(int commentId) {
-		commentDao.incOppositionCount(commentId);
+	public void oppositeComment(String userId, int commentId) {
+		if (!commentDao.isOppositedCommentBy(userId, commentId)) {
+			commentDao.incOppositionCount(commentId);
+			commentDao.markAsOppositeBy(userId, commentId);
+		}
 	}
 
 }

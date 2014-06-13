@@ -20,4 +20,8 @@ public interface CommentDao {
 
 	public abstract void markAsRecommendBy(String userId, int commentId);
 
+	public abstract boolean isOppositedCommentBy(String userId, int commentId);
+
+	public abstract void markAsOppositeBy(String userId, int commentId);
+
 }

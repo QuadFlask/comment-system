@@ -73,7 +73,7 @@ public class CommentServiceTest {
 		commentService.write(comment);
 
 		Comment wroteComment = commentService.getCommentList(1).get(0);
-		commentService.oppositeComment(wroteComment.getCommentId());
+		commentService.oppositeComment(writer.getId(), wroteComment.getCommentId());
 
 		Comment oppositedComment = commentService.getCommentList(1).get(0);
 		assertThat(oppositedComment.getOppositionCount(), is(1));
@@ -96,5 +96,24 @@ public class CommentServiceTest {
 		Comment recommendedComment = commentService.getCommentList(1).get(0);
 		// but inc only one time
 		assertThat(recommendedComment.getRecommendationCount(), is(1));
+	}
+
+	@Test
+	@Transactional
+	public void oppositeCommentTwice() {
+		Comment comment = new Comment();
+		User writer = new User("pop2331", "flask", null, null);
+		comment.setWriter(writer);
+		comment.setContents("test comment text");
+		commentService.write(comment);
+
+		Comment wroteComment = commentService.getCommentList(1).get(0);
+		// twice!
+		commentService.oppositeComment(writer.getId(), wroteComment.getCommentId());
+		commentService.oppositeComment(writer.getId(), wroteComment.getCommentId());
+
+		Comment oppositedComment = commentService.getCommentList(1).get(0);
+		// but inc only one time
+		assertThat(oppositedComment.getOppositionCount(), is(1));
 	}
 }
