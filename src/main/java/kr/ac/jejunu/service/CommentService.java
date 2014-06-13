@@ -27,4 +27,8 @@ public class CommentService {
 		commentDao.addCommnet(comment);
 	}
 
+	public void recommendComment(int commentId) {
+		commentDao.incRecommendationCount(commentId);
+	}
+
 }
