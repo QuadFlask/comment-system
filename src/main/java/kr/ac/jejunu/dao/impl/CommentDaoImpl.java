@@ -1,11 +1,13 @@
 package kr.ac.jejunu.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
-
-import org.mybatis.spring.support.SqlSessionDaoSupport;
+import java.util.Map;
 
 import kr.ac.jejunu.dao.CommentDao;
 import kr.ac.jejunu.model.Comment;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 
@@ -33,6 +35,14 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 	@Override
 	public void incOppositionCount(int commentId) {
 		getSqlSession().update("commentDao.incOppositionCount", commentId);
+	}
+
+	@Override
+	public boolean isRecommendedCommentBy(String userId, int commentId) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("userId", userId);
+		param.put("commendId", commentId);
+		return Integer.parseInt(getSqlSession().selectOne("commentDao.isRecommendedCommentBy", param).toString()) >= 1;
 	}
 
 }

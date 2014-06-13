@@ -16,4 +16,6 @@ public interface CommentDao {
 
 	public abstract void incOppositionCount(int commentId);
 
+	public abstract boolean isRecommendedCommentBy(String userId, int commentId);
+
 }

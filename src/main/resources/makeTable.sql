@@ -31,3 +31,11 @@ insert into comment(writer_id, contents, recommendation_count, opposition_count,
 	2,
 	'201406040000'
 );
+
+create table recommended_comment(
+	comment_id int not null,
+	recommend_user_id varchar(20) not null,
+	primary key (comment_id, recommend_user_id),
+	foreign key (`comment_id`) references `comment`(`comment_id`),
+	foreign key (`recommend_user_id`) references `user`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

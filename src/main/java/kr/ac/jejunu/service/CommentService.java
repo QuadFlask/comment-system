@@ -27,8 +27,9 @@ public class CommentService {
 		commentDao.addCommnet(comment);
 	}
 
-	public void recommendComment(int commentId) {
-		commentDao.incRecommendationCount(commentId);
+	public void recommendComment(String userId, int commentId) {
+		if (!commentDao.isRecommendedCommentBy(userId, commentId))
+			commentDao.incRecommendationCount(commentId);
 	}
 
 	public void oppositeComment(int commentId) {
