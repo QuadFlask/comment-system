@@ -22,9 +22,13 @@ public class OppositeCommentController {
 	public String incOppositeAction(@PathVariable int commentId, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
-			commentService.oppositeComment(user.getId(), commentId);
+			try {
+				commentService.oppositeComment(user.getId(), commentId);
+			} catch (RuntimeException e) {
+				return "{\"result\":\"duplicated\"}";
+			}
 			return "{\"result\":\"success\"}";
 		}
-		throw new RuntimeException(); 
+		throw new RuntimeException();
 	}
 }

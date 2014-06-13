@@ -39,7 +39,8 @@ public class CommentService {
 		if (!commentDao.isOppositedCommentBy(userId, commentId)) {
 			commentDao.incOppositionCount(commentId);
 			commentDao.markAsOppositeBy(userId, commentId);
-		}
+		} else
+			throw new RuntimeException();
 	}
 
 }
