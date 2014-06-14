@@ -83,7 +83,7 @@ public class CommentDaoTest {
 
 		assertThat(incComment.getRecommendationCount(), is(1));
 	}
-	
+
 	@Test
 	@Transactional
 	public void incOppositionCount() {
@@ -99,7 +99,28 @@ public class CommentDaoTest {
 		Comment incComment = comments.get(0);
 
 		assertThat(incComment.getOppositionCount(), is(1));
-		
+	}
+
+	@Test
+	@Transactional
+	public void getCommentById() {
+		Comment comment = createSampleComment();
+
+		commentDao.addCommnet(comment);
+		List<Comment> comments = commentDao.getCommentsByPage(1);
+
+		Comment addedComment = comments.get(0);
+
+		Comment addedComment2 = commentDao.getCommentById(addedComment.getCommentId());
+
+		assertThat(addedComment2.getCommentId(), is(addedComment.getCommentId()));
+		assertThat(addedComment2.getContents(), is(addedComment.getContents()));
+		assertThat(addedComment2.getRecommendationCount(), is(addedComment.getRecommendationCount()));
+		assertThat(addedComment2.getOppositionCount(), is(addedComment.getOppositionCount()));
+		assertThat(addedComment2.getRegdttm(), is(addedComment.getRegdttm()));
+		assertThat(addedComment2.getWriter().getId(), is(addedComment.getWriter().getId()));
+		assertThat(addedComment2.getWriter().getName(), is(addedComment.getWriter().getName()));
+
 	}
 
 	private Comment createSampleComment() {

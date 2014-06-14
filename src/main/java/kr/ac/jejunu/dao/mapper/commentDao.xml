@@ -91,5 +91,20 @@
 			#{userId}
 		)
 	</insert>
+	<select id="getCommentById" parameterType="int" resultMap="comment">
+		select 
+			comment_id,
+			writer_id,
+			USER.name as writer_name,
+			contents,
+			recommendation_count,
+			opposition_count,
+			regdttm 
+		from 
+			COMMENT, USER 
+		where 
+			writer_id = USER.id and
+			comment_id = #{commentId} 
+	</select>
 	
 </mapper>

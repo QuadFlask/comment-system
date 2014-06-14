@@ -69,4 +69,9 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 		getSqlSession().insert("commentDao.markAsOppositeBy", param);
 	}
 
+	@Override
+	public Comment getCommentById(int commentId) {
+		return getSqlSession().selectOne("commentDao.getCommentById", commentId);
+	}
+
 }

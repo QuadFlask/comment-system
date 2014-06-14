@@ -44,4 +44,12 @@ public class CommentService {
 			throw new DuplicatedRequestException();
 	}
 
+	public void deleteComment(String id, int commentId) {
+		Comment comment = commentDao.getCommentById(commentId);
+		if (comment.getWriter().getId().equals(id))
+			commentDao.delete(commentId);
+		else
+			throw new RuntimeException();
+	}
+
 }

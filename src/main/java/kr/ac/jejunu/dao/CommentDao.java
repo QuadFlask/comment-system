@@ -24,4 +24,6 @@ public interface CommentDao {
 
 	public abstract void markAsOppositeBy(String userId, int commentId);
 
+	public abstract Comment getCommentById(int commentId);
+
 }

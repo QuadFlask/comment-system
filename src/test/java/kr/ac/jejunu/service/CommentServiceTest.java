@@ -101,4 +101,28 @@ public class CommentServiceTest {
 		// but inc only one time
 		assertThat(oppositedComment.getOppositionCount(), is(1));
 	}
+
+	@Test
+	@Transactional
+	public void deleteComment() {
+		commentService.write(comment);
+		assertThat(commentService.getCommentList(1).size(), is(2));
+
+		Comment writtenComment = commentService.getCommentList(1).get(0);
+
+		commentService.deleteComment(writer.getId(), writtenComment.getCommentId());
+
+		assertThat(commentService.getCommentList(1).size(), is(1));
+	}
+
+	@Test(expected = RuntimeException.class)
+	@Transactional
+	public void deleteCommentWithOtherUser() {
+		commentService.write(comment);
+		assertThat(commentService.getCommentList(1).size(), is(2));
+
+		Comment writtenComment = commentService.getCommentList(1).get(0);
+
+		commentService.deleteComment("otherUser", writtenComment.getCommentId());
+	}
 }
