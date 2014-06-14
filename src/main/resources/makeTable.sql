@@ -13,6 +13,7 @@ create table user(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 insert into user values('pop2331', '성의현', '1', 'flask');
+insert into user values('pop9310', '성의현2', '1', 'flask2');
 
 create table comment(
 	comment_id int auto_increment primary key,

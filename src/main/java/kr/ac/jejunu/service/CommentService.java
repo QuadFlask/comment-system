@@ -47,7 +47,7 @@ public class CommentService {
 
 	public void deleteComment(String id, int commentId) {
 		Comment comment = commentDao.getCommentById(commentId);
-		if (comment.getWriter().getId().equals(id))
+		if (comment != null && comment.getWriter().getId().equals(id))
 			commentDao.delete(commentId);
 		else
 			throw new OwnerNotMatchedException();
