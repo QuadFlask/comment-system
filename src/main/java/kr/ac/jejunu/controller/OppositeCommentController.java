@@ -2,6 +2,7 @@ package kr.ac.jejunu.controller;
 
 import javax.servlet.http.HttpSession;
 
+import kr.ac.jejunu.exception.DuplicatedRequestException;
 import kr.ac.jejunu.model.User;
 import kr.ac.jejunu.service.CommentService;
 
@@ -24,11 +25,11 @@ public class OppositeCommentController {
 		if (user != null) {
 			try {
 				commentService.oppositeComment(user.getId(), commentId);
-			} catch (RuntimeException e) {
+			} catch (DuplicatedRequestException e) {
 				return "{\"result\":\"duplicated\"}";
 			}
 			return "{\"result\":\"success\"}";
 		}
-		throw new RuntimeException();
+		throw new LoginRequiredException();
 	}
 }

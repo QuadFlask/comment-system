@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.jejunu.dao.CommentDao;
+import kr.ac.jejunu.exception.DuplicatedRequestException;
 import kr.ac.jejunu.model.Comment;
 
 @Service
@@ -32,7 +33,7 @@ public class CommentService {
 			commentDao.incRecommendationCount(commentId);
 			commentDao.markAsRecommendBy(userId, commentId);
 		} else
-			throw new RuntimeException();
+			throw new DuplicatedRequestException();
 	}
 
 	public void oppositeComment(String userId, int commentId) {
@@ -40,7 +41,7 @@ public class CommentService {
 			commentDao.incOppositionCount(commentId);
 			commentDao.markAsOppositeBy(userId, commentId);
 		} else
-			throw new RuntimeException();
+			throw new DuplicatedRequestException();
 	}
 
 }
