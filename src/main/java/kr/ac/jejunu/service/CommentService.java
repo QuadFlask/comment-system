@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.jejunu.dao.CommentDao;
 import kr.ac.jejunu.exception.DuplicatedRequestException;
+import kr.ac.jejunu.exception.OwnerNotMatchedException;
 import kr.ac.jejunu.model.Comment;
 
 @Service
@@ -49,7 +50,7 @@ public class CommentService {
 		if (comment.getWriter().getId().equals(id))
 			commentDao.delete(commentId);
 		else
-			throw new RuntimeException();
+			throw new OwnerNotMatchedException();
 	}
 
 }

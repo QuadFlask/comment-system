@@ -3,6 +3,7 @@ package kr.ac.jejunu.controller;
 import javax.servlet.http.HttpSession;
 
 import kr.ac.jejunu.exception.DuplicatedRequestException;
+import kr.ac.jejunu.exception.LoginRequiredException;
 import kr.ac.jejunu.model.User;
 import kr.ac.jejunu.service.CommentService;
 

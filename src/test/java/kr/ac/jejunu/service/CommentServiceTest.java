@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import kr.ac.jejunu.exception.DuplicatedRequestException;
+import kr.ac.jejunu.exception.OwnerNotMatchedException;
 import kr.ac.jejunu.model.Comment;
 import kr.ac.jejunu.model.User;
 
@@ -74,7 +76,7 @@ public class CommentServiceTest {
 		assertThat(oppositedComment.getOppositionCount(), is(1));
 	}
 
-	@Test
+	@Test(expected = DuplicatedRequestException.class)
 	@Transactional
 	public void recommandCommentTwiceBySameUser() {
 		commentService.write(comment);
@@ -88,7 +90,7 @@ public class CommentServiceTest {
 		assertThat(recommendedComment.getRecommendationCount(), is(1));
 	}
 
-	@Test
+	@Test(expected = DuplicatedRequestException.class)
 	@Transactional
 	public void oppositeCommentTwiceBySameUser() {
 		commentService.write(comment);
@@ -115,7 +117,7 @@ public class CommentServiceTest {
 		assertThat(commentService.getCommentList(1).size(), is(1));
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test(expected = OwnerNotMatchedException.class)
 	@Transactional
 	public void deleteCommentWithOtherUser() {
 		commentService.write(comment);
