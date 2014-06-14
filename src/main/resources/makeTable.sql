@@ -37,7 +37,7 @@ create table recommended_comment(
 	comment_id int not null,
 	recommend_user_id varchar(20) not null,
 	primary key (comment_id, recommend_user_id),
-	foreign key (`comment_id`) references `comment`(`comment_id`),
+	foreign key (`comment_id`) references `comment`(`comment_id`) on delete cascade,
 	foreign key (`recommend_user_id`) references `user`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -45,6 +45,6 @@ create table opposited_comment(
 	comment_id int not null,
 	opposited_user_id varchar(20) not null,
 	primary key (comment_id, opposited_user_id),
-	foreign key (`comment_id`) references `comment`(`comment_id`),
+	foreign key (`comment_id`) references `comment`(`comment_id`) on delete cascade,
 	foreign key (`opposited_user_id`) references `user`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
