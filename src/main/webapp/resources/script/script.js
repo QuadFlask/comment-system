@@ -2,10 +2,10 @@ function deleteComment(commentId){
 	if (confirm("댓글을 삭제하시겠습니까?"))
 		$.ajax(
 			{
-				url: "/comment/" + commentId + "/delete",
+				url: "/comment/" + commentId + "/delete.json",
 				dataType: "json",
 				success: function (data){
-					if(data.result == 'success'){
+					if(data.actionResult.result == "success"){
 						alert("삭제되었습니다.");
 						location.reload(true);
 					}
@@ -19,10 +19,10 @@ function deleteComment(commentId){
 function markComment(btn, commentId){
 	$.ajax(
 		{
-			url: "/comment/" + commentId + "/" + btn.className,
+			url: "/comment/" + commentId + "/" + btn.className + ".json",
 			dataType: "json",
 			success: function (data){
-				if(data.result == 'success'){
+				if(data.actionResult.result == "success"){
 					var tag = btn.getElementsByTagName("span")[0];
 					var currentCount = parseInt(tag.innerHTML);
 					tag.innerHTML = currentCount + 1;
