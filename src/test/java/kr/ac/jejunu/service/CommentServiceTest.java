@@ -127,4 +127,17 @@ public class CommentServiceTest {
 
 		commentService.deleteComment("otherUser", writtenComment.getCommentId());
 	}
+
+	@Test
+	@Transactional
+	public void getTotalPageCount() {
+		int pageCount = commentService.getTotalPageCount();
+		assertThat(pageCount, is(1));
+
+		for (int i = 0; i < 10; i++) 
+			commentService.write(comment);
+
+		pageCount = commentService.getTotalPageCount();
+		assertThat(pageCount, is(2));
+	}
 }

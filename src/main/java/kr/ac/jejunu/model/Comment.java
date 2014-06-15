@@ -47,17 +47,17 @@ public class Comment {
 		this.regdttm = regdttm;
 
 		try {
-			SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmm");
-			Date date = s.parse(regdttm);
+			SimpleDateFormat dbFormat = new SimpleDateFormat("yyyyMMddhhmm");
+			Date date = dbFormat.parse(regdttm);
 			Date now = Calendar.getInstance().getTime();
 
-			SimpleDateFormat s2;
+			SimpleDateFormat prettyFormat;
 			if (date.getYear() == now.getYear() && date.getMonth() == now.getMonth() && date.getDate() == now.getDate()) {
-				s2 = new SimpleDateFormat("hh:mm");
+				prettyFormat = new SimpleDateFormat("hh:mm");
 			} else {
-				s2 = new SimpleDateFormat("yyyy.MM.dd");
+				prettyFormat = new SimpleDateFormat("yyyy.MM.dd");
 			}
-			prettyDateTime = s2.format(date);
+			prettyDateTime = prettyFormat.format(date);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

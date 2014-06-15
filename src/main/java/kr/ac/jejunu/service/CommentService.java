@@ -53,4 +53,8 @@ public class CommentService {
 			throw new OwnerNotMatchedException();
 	}
 
+	public int getTotalPageCount() {
+		return (int) Math.ceil(commentDao.getCommentsCount() / 10.f);
+	}
+
 }

@@ -26,4 +26,6 @@ public interface CommentDao {
 
 	public abstract Comment getCommentById(int commentId);
 
+	public abstract int getCommentsCount();
+
 }

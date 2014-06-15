@@ -74,4 +74,9 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 		return getSqlSession().selectOne("commentDao.getCommentById", commentId);
 	}
 
+	@Override
+	public int getCommentsCount() {
+		return getSqlSession().selectOne("commentDao.getCommentsCount");
+	}
+
 }

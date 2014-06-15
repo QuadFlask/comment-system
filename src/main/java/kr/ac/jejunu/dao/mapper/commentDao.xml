@@ -106,5 +106,11 @@
 			writer_id = USER.id and
 			comment_id = #{commentId} 
 	</select>
+	<select id="getCommentsCount" resultType="int">
+		select 
+			COUNT(*) 
+		from
+			COMMENT 
+	</select>
 	
 </mapper>
