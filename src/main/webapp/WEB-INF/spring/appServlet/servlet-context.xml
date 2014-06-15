@@ -55,6 +55,7 @@
 				<entry key="json" value="application/json"/>
 			</map>
 		</property>
+		<property name="ignoreAcceptHeader" value="true"/>
 		<property name="defaultViews">
 			<list>
 				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
