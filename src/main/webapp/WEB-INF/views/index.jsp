@@ -13,7 +13,8 @@
 				<span id="user_info">
 					<c:if test="${user != null}">
 						${user.name} (${user.explanation}) 
-					</c:if></span>
+					</c:if>
+				</span>
 				<button id="write_comment_btn" onclick="openWriteForm()">글쓰기</button>
 			</div>
 			<div id="comment_container">
@@ -32,6 +33,20 @@
 				</c:forEach>
 				
 			</div>
+			
+			<div id="page_indicator">
+				<c:forEach var="pageNumber" begin="1" end="${totalPageCount}">
+					<c:choose>
+						<c:when test="${currentPage == pageNumber}">
+							<b class="page_number_item active">${pageNumber}</b>
+						</c:when>
+						<c:otherwise>
+							<a href="/?page=${pageNumber}" class="page_number_item">${pageNumber}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</div>
+			
 		</div>
 	</body>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>

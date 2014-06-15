@@ -1,7 +1,5 @@
 package kr.ac.jejunu.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.ac.jejunu.service.CommentService;
@@ -9,6 +7,7 @@ import kr.ac.jejunu.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -18,11 +17,16 @@ public class CommentListController {
 	CommentService commentService;
 
 	@RequestMapping("/")
-	public ModelAndView commentList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public ModelAndView commentList(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			HttpSession session) {
+		page = Math.max(page, 1);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index");
-		mv.addObject("commentList", commentService.getCommentList(1));
+		mv.addObject("commentList", commentService.getCommentList(page));
 		mv.addObject("user", session.getAttribute("user"));
+		mv.addObject("currentPage", page);
+		mv.addObject("totalPageCount", commentService.getTotalPageCount());
 		return mv;
 	}
 }

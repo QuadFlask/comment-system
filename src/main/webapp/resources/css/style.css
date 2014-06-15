@@ -50,3 +50,23 @@ label {
 	width:300px;
 	height: 150px;
 }
+#page_indicator{
+	text-align: center;
+	margin: auto;
+	margin-top: 25px;
+}
+.page_number_item{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	border: 1px #ccc solid;
+	text-align: center;
+	text-decoration: none;
+	position: relative;
+	padding: 5px 2px 0px 2px;
+}
+.active{
+	text-emphasis: 1.5em;
+	border: 1px #f22 solid;
+	color: #f00;
+}
