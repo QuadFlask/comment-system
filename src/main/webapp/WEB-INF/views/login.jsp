@@ -3,7 +3,7 @@
 <html lang="ko">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<title>Comment system</title>
+		<title>Comment system - Login</title>
 		<link rel="stylesheet" type="text/css" href="/resources/css/style.css" />
 	</head>
 	<body>

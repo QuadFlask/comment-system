@@ -28,4 +28,6 @@ public interface CommentDao {
 
 	public abstract int getCommentsCount();
 
+	public abstract boolean isMarkedCommentBy(String userId, int commentId);
+
 }

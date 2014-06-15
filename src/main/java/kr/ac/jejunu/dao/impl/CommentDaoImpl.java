@@ -79,4 +79,9 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 		return getSqlSession().selectOne("commentDao.getCommentsCount");
 	}
 
+	@Override
+	public boolean isMarkedCommentBy(String userId, int commentId) {
+		return isRecommendedCommentBy(userId, commentId) || isOppositedCommentBy(userId, commentId);
+	}
+
 }

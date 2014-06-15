@@ -84,10 +84,6 @@ public class CommentServiceTest {
 		// twice!
 		commentService.recommendComment(writer.getId(), writtenComment.getCommentId());
 		commentService.recommendComment(writer.getId(), writtenComment.getCommentId());
-
-		Comment recommendedComment = commentService.getCommentList(1).get(0);
-		// but inc only one time
-		assertThat(recommendedComment.getRecommendationCount(), is(1));
 	}
 
 	@Test(expected = DuplicatedRequestException.class)
@@ -98,10 +94,16 @@ public class CommentServiceTest {
 		// twice!
 		commentService.oppositeComment(writer.getId(), writtenComment.getCommentId());
 		commentService.oppositeComment(writer.getId(), writtenComment.getCommentId());
-
-		Comment oppositedComment = commentService.getCommentList(1).get(0);
-		// but inc only one time
-		assertThat(oppositedComment.getOppositionCount(), is(1));
+	}
+	
+	@Test(expected = DuplicatedRequestException.class)
+	@Transactional
+	public void recommandAndOppositeCommentTwiceBySameUser() {
+		commentService.write(comment);
+		Comment writtenComment = commentService.getCommentList(1).get(0);
+		// twice!
+		commentService.recommendComment(writer.getId(), writtenComment.getCommentId());
+		commentService.oppositeComment(writer.getId(), writtenComment.getCommentId());
 	}
 
 	@Test

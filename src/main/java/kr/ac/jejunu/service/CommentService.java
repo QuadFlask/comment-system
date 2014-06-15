@@ -30,7 +30,7 @@ public class CommentService {
 	}
 
 	public void recommendComment(String userId, int commentId) {
-		if (!commentDao.isRecommendedCommentBy(userId, commentId)) {
+		if (!commentDao.isMarkedCommentBy(userId, commentId)) {
 			commentDao.incRecommendationCount(commentId);
 			commentDao.markAsRecommendBy(userId, commentId);
 		} else
@@ -38,7 +38,7 @@ public class CommentService {
 	}
 
 	public void oppositeComment(String userId, int commentId) {
-		if (!commentDao.isOppositedCommentBy(userId, commentId)) {
+		if (!commentDao.isMarkedCommentBy(userId, commentId)) {
 			commentDao.incOppositionCount(commentId);
 			commentDao.markAsOppositeBy(userId, commentId);
 		} else
