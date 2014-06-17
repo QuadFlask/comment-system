@@ -13,6 +13,8 @@ var commentTemplate =
 	'<% if (user != null && comment.writer.id == user.id) {%> <button class="delete" onclick="deleteComment(<%=comment.commentId%>)">삭제</button> <%}%>'+
 	'<div class="time_stamp"><%=comment.prettyDateTime%></div>'+
 '</div>';
+var pageIndicatorTemplate =
+'<% if(currentPage == pageNumber){ %> <b class="page_number_item active"><%=pageNumber%></b> <%} else {%> <a href="/#page=<%=pageNumber%>" class="page_number_item"><%=pageNumber%></a> <%}%>';
 
 function getCommentList(page){
 	$.ajax(
@@ -31,6 +33,11 @@ function getCommentList(page){
 					var container = $('#comment_container');
 					container.empty();
 					container.append(html);
+					
+					var pageIndicator = $("#page_indicator");
+					pageIndicator.empty();
+					for(var pageNumber = 1; pageNumber <= data.totalPageCount; pageNumber++)
+						pageIndicator.append(_.template(pageIndicatorTemplate, {"currentPage": data.currentPage, "pageNumber": pageNumber}));
 				}
 			},
 			error: function(o,c,m){

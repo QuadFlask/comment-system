@@ -41,7 +41,7 @@
 							<b class="page_number_item active">${pageNumber}</b>
 						</c:when>
 						<c:otherwise>
-							<a href="/?page=${pageNumber}" class="page_number_item">${pageNumber}</a>
+							<a href="/#page=${pageNumber}" class="page_number_item">${pageNumber}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
