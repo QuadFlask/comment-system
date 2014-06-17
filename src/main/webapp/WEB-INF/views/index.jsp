@@ -50,5 +50,7 @@
 		</div>
 	</body>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="http://underscorejs.org/underscore-min.js"></script>
+	
 	<script src="/resources/script/script.js"></script>
 </html>
